@@ -1,3 +1,4 @@
+
 def receive_basic_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypotension, Hypertension):
  ##Recevie data from input module, then analyze it using some judge functions to generate boolean result
  ##Boolean Parameters
@@ -18,12 +19,12 @@ def receive_basic_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hyp
 
     return BasicResult
 
-
+'''
 def send_basic_input_data(BasicResult, BasicData):
  ## Receive the result and show it on terminal or web page
     sentData = analyze(BasicResult)
     return sentData, BasicData
-
+'''
 def receive_AI_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypotension, Hypertension):
  ## Recevie AI data from input module, then analyze it using some judge functions to generate boolean result
  ## Paramter is boolean
@@ -41,9 +42,11 @@ def receive_AI_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypote
         AIResult.append(Hypotension)
     if(Hypertension == True):
         AIResult.append(Hypertension) 
-    return AIresult
+    return AIResult
 
+'''
 def send_AI_input_data(AIResult):
  ## Receive the result and show it on terminal or web page
-    sentData = analyze(AIResult)
+    #sentData = analyze(AIResult)
     return sentData
+'''

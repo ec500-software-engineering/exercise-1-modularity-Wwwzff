@@ -71,7 +71,7 @@ class DataBaseModule:
             print("Authentation Failed")
             
     
-    def search(self,ID):
+    def search(self, ID):
         """
         search all patient's historical data based on user id
         :param ID: user id

@@ -1,28 +1,29 @@
 
 import numpy as np
-import DataBaseModule
+from Database_Module import DataBaseModule
 
 # Input: ID(from main function perhaps), infoDB(from Database function)
 # output: Three predicted parameters, three Alert signals(Type:Boolean
 
 class AI_module(object):
-    def __init__(self, dict):
-        self._dict = dict
+    def __init__(self, infoDict):
+        self.infoDB = infoDict
 
-    def Query_Data_From_Database(self,ID,infoDB):
+    def Query_Data_From_Database(self,ID):
         ## connect database, query previous one day data from Database
         # Database = database_dict()
-        Blood_oxygen=list()
-        Blood_pressure = list()
-        Pulses= list()
-        DataBaseModule.search(ID)
+        Blood_oxygen= []
+        Blood_pressure = []
+        Pulses= []
+        
+        info = DataBaseModule().search(ID)
         # Username = input("")
         #get dictionary from database
-        for key in infoDB:
+        for key in self.infoDB:
             if key== ID:
-                pressure = dict.get('blood_pressure')
-                oxygen = dict.get('blood_oxygen')
-                Pulse = dict.get('blood_pulses')
+                pressure = info['blood_pressure']
+                oxygen = info['blood_oxygen']
+                Pulse = info['blood_pulses']
                 Blood_pressure.append(pressure)
                 Blood_oxygen.append(oxygen)
                 Pulses.append(Pulse)
@@ -63,6 +64,6 @@ class AI_module(object):
             Pulse_Alert =True
         ## feedback the AI prediction restult to the interface
         ## It will turn on the Alert when the statues get worse.
-        return BO_Alert,BP_Alert,Pulse_Alert
+        return (BO_Alert,BP_Alert,Pulse_Alert)
 
 

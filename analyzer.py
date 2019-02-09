@@ -1,46 +1,43 @@
-## Initialize boolean output
-Signal_Loss = False
-Shock_Alert = False
-Oxygen_Supply = False
-Fever = False
-Hypotension = False
-Hypertension = False
+class Analyzer:
+    def __init__(self, Systolic_BP, Diastolic_BP, Heart_Rate, Heart_O2_Level, Body_temp):
+        self.Systolic_BP = Systolic_BP
+        self.Diastolic_BP = Diastolic_BP
+        self.Heart_Rate = Heart_Rate
+        self.Heart_O2_Level = Heart_O2_Level
+        self.Body_temp = Body_temp
 
-def analyzer(Systolic_BP, Diastolic_BP, Heart_Rate, Heart_O2_Level, Body_temp):
-    global Signal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypotension, Hypertension
-    try:
-        if (Systolic_BP < 90 and Diastolic_BP < 60):
-            Hypotension = True
-        else:
-            Hypotension = False
-    except ValueError:
-        print("Alert! No valid input of blood pressure!")
-
-    try:
-        if (Systolic_BP > 140 or Diastolic_BP > 90):
-            Hypertension = True
-        else:
-            Hypertension = False
-    except ValueError:
-        print("Alert! No valid input of blood pressure!")
-        
-    try:
+    def Signal_Loss(self, Heart_Rate, Body_temp):
+        # Signal loss judgement
         if (Heart_Rate < 60 and Body_temp < 36):
-            Signal_Loss = True
-        elif (Heart_Rate < 60 and Body_temp >= 36):
-            Shock_Alert = True
-        else:
-            Signal_Loss = False
-            Shock_Alert = False
-    
-        if (Body_temp > 37.5):
-            Fever = True
-        else:
-            Fever = False
+            return True
+        return False
 
+    def Shock_Alert(self, Heart_Rate, Body_temp):
+        # Shock emergency judgement
+        if (Heart_Rate < 60 and Body_temp >= 36):
+            return True
+        return False
+    
+    def Oxygen_Supply(self, Heart_O2_Level):
+        # Oxygen supply judgement
         if (Heart_O2_Level < 70):
-            Oxygen_Supply = True
-        else:
-            Oxygen_Supply = False
-    except ValueError:
-        print("Alert! No valid input of Heart Rate and Body Temperature")
+            return True
+        return False
+    
+    def Fever(self, Body_temp):
+        # Fever judgement
+        if (Body_temp > 37.5):
+            return True
+        return False
+    
+    def Hypotension(self, Systolic_BP, Diastolic_BP):
+        # Hypotension judgement
+        if (Systolic_BP < 90 and Diastolic_BP < 60):
+            return True
+        return False
+    
+    def Hypertension(self, Systolic_BP, Diastolic_BP):
+        # Hypertension judgement
+        if (Systolic_BP > 140 or Diastolic_BP > 90):
+            return True
+        return False
