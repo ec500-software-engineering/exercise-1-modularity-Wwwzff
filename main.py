@@ -45,9 +45,11 @@ with open(txtFile) as f:
     Hypotension = analyse.Hypotension(Systolic_BP,Diastolic_BP)
     Hypertension = analyse.Hypertension(Systolic_BP,Diastolic_BP)
 
-    #pass signals to output
+    #pass alert signals to output
     output = receive_basic_iuput_data(signal_loss, Shock_Alert, Oxygen_Supply, Fever, Hypotension, Hypertension)
     print(output)
+    #database query
+    print(DB.search('50000'))
 
 
 
@@ -55,9 +57,12 @@ with open(txtFile) as f:
 
 
 # Machine Learning Part
-MLpart = AI_module(infoDB)
-Blood_oxygen, Blood_pressure, Pulses = MLpart.Query_Data_From_Database('50000')
-pressure_predict_result, oxygen_predict_result, Pulse_predict_result = MLpart.AI_Module(Blood_oxygen, Blood_pressure, Pulses)
-feedback = MLpart.Feedback(pressure_predict_result, oxygen_predict_result, Pulse_predict_result)
+MLpart = AI_module(DB.infoDB)
+Blood_oxygen, Diastolic_BP, Systolic_BP, Pulses = MLpart.Query_Data_From_Database('50000')
+oxygen_predict_result, Pulse_predict_result, Diastolic_BP_result, Systolic_BP_result = MLpart.AI_Module(Blood_oxygen, Diastolic_BP, Systolic_BP, Pulses)
+feedback = MLpart.Feedback(Diastolic_BP_result, Systolic_BP_result, oxygen_predict_result, Pulse_predict_result)
 
+#feedback for prediction
+#BO_Alert,BP_Alert,Pulse_Alert
+#Boolean type
 print(feedback)

@@ -3,19 +3,19 @@ def receive_basic_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hyp
  ##Recevie data from input module, then analyze it using some judge functions to generate boolean result
  ##Boolean Parameters
  ##If paramter returns True, means it should be alerted, then add it to the array
-    BasicResult = []
+    BasicResult = {}
     if(Singal_Loss == True):
-        BasicResult.append(Singal_Loss)
+        BasicResult["Singal_Loss"] = True
     if(Shock_Alert == True):
-        BasicResult.append(Shock_Alert) 
+        BasicResult['Shock_Alert'] = True
     if(Oxygen_Supply == True):
-        BasicResult.append(Oxygen_Supply)
+        BasicResult['Oxygen_Supply'] = True
     if(Fever == True):
-        return BasicResult.append(Fever) 
+        BasicResult['Fever'] = True 
     if(Hypotension == True):
-        BasicResult.append(Hypotension)
+        BasicResult['Hypotension'] = True
     if(Hypertension == True):
-        BasicResult.append(Hypertension) 
+        BasicResult['Hypertension'] = True  
 
     return BasicResult
 
@@ -37,7 +37,7 @@ def receive_AI_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypote
     if(Oxygen_Supply == True):
         AIResult.append(Oxygen_Supply)
     if(Fever == True):
-        return AIResult.append(Fever) 
+        AIResult.append(Fever) 
     if(Hypotension == True):
         AIResult.append(Hypotension)
     if(Hypertension == True):
