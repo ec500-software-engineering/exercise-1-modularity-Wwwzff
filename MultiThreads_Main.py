@@ -18,7 +18,7 @@ DB.authen(username, password)
 
 class MultiThreads:
     def __init__(self):
-        #self.printed = False
+        self.printed = False
         self.output = {}
         self.inputbuffer = []
 
@@ -60,18 +60,19 @@ class MultiThreads:
                 #pass alert signals to output
                 self.output[ctime()] = receive_basic_iuput_data(signal_loss, Shock_Alert, \
                     Oxygen_Supply, Fever, Hypotension, Hypertension)
-                #self.printed = False
-            self.inputbuffer = []
+                self.printed = False
+            #self.inputbuffer = []
             time.sleep(1)
 
     def output_module(self):
         print('[OutputModule]start working')
         while True:
             if len(self.output) != 0:
-                print(self.output)
-                #self.printed = True
-                self.output = {}
-                time.sleep(1)
+                if self.printed == False:
+                    print(self.output)
+                    self.printed = True
+                    #self.output = {}
+                    time.sleep(1)
 
 
 

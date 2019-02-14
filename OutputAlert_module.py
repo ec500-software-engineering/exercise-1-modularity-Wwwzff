@@ -4,17 +4,17 @@ def receive_basic_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hyp
  ##Boolean Parameters
  ##If paramter returns True, means it should be alerted, then add it to the array
     BasicResult = {}
-    if(Singal_Loss == True):
+    if Singal_Loss:
         BasicResult["Singal_Loss"] = True
-    if(Shock_Alert == True):
+    if Shock_Alert:
         BasicResult['Shock_Alert'] = True
-    if(Oxygen_Supply == True):
+    if Oxygen_Supply:
         BasicResult['Oxygen_Supply'] = True
-    if(Fever == True):
+    if Fever:
         BasicResult['Fever'] = True 
-    if(Hypotension == True):
+    if Hypotension:
         BasicResult['Hypotension'] = True
-    if(Hypertension == True):
+    if Hypertension:
         BasicResult['Hypertension'] = True  
 
     return BasicResult
@@ -30,17 +30,17 @@ def receive_AI_iuput_data(Singal_Loss, Shock_Alert, Oxygen_Supply, Fever, Hypote
  ## Paramter is boolean
  ## If paramter is True, means it should be alerted, then add it to the array
     AIResult = []
-    if(Singal_Loss == True):
+    if Singal_Loss:
         AIResult.append(Singal_Loss) 
-    if(Shock_Alert == True):
+    if Shock_Alert:
         AIResult.append(Shock_Alert) 
-    if(Oxygen_Supply == True):
+    if Oxygen_Supply:
         AIResult.append(Oxygen_Supply)
-    if(Fever == True):
+    if Fever:
         AIResult.append(Fever) 
-    if(Hypotension == True):
+    if Hypotension:
         AIResult.append(Hypotension)
-    if(Hypertension == True):
+    if Hypertension:
         AIResult.append(Hypertension) 
     return AIResult
 
