@@ -79,11 +79,11 @@ class MultiThreads:
 task = MultiThreads()
 
 threads = []
-thread1 = threading.Thread(target=task.inputpart())
+thread1 = threading.Thread(target=task.inputpart)
 threads.append(thread1)
-thread2 = threading.Thread(target=task.process())
+thread2 = threading.Thread(target=task.process)
 threads.append(thread2)
-thread3 = threading.Thread(target=task.output_module())
+thread3 = threading.Thread(target=task.output_module)
 threads.append(thread3)
 
 for part in threads:
