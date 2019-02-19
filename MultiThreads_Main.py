@@ -2,7 +2,7 @@ import threading
 #from AI_module import AI_module
 from analyzer import Analyzer
 from Database_Module import DataBaseModule
-from input_api import input_api, implement_filter
+from input_api import input_api
 from time import ctime
 from OutputAlert_module import receive_basic_iuput_data
 import time
