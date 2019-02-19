@@ -68,7 +68,7 @@ class MultiThreads:
         print('[OutputModule]start working')
         while True:
             if len(self.output) != 0:
-                if self.printed not True:
+                if not self.printed:
                     print(self.output)
                     self.printed = True
                     #self.output = {}
