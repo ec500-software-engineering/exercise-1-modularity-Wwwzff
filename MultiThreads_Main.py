@@ -1,10 +1,10 @@
 import threading
-from AI_module import AI_module
+#from AI_module import AI_module
 from analyzer import Analyzer
 from Database_Module import DataBaseModule
 from input_api import input_api, filt
 from time import ctime
-from OutputAlert_module import *
+from OutputAlert_module import receive_basic_iuput_data
 import time
 
 #source of input signals
@@ -68,7 +68,7 @@ class MultiThreads:
         print('[OutputModule]start working')
         while True:
             if len(self.output) != 0:
-                if self.printed == False:
+                if self.printed not True:
                     print(self.output)
                     self.printed = True
                     #self.output = {}
